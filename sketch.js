@@ -80,14 +80,14 @@ function draw() {
 }
 
 function mouseDragged() {
-  //if (gameState !== 'launched') {
-  Matter.Body.setPosition(bird.body, { x: mouseX, y: mouseY })
-  //}
+  if (gameState !== 'launched') {
+    Matter.Body.setPosition(bird.body, { x: mouseX, y: mouseY })
+  }
 }
 
 function mouseReleased() {
   slingshot.fly()
-  // gameState = 'launched'
+  gameState = 'launched'
 }
 
 function keyPressed() {
@@ -99,7 +99,6 @@ function keyPressed() {
 async function getBackgroundImg() {
   var response = await fetch('http://worldtimeapi.org/api/timezone/Asia/Tokyo')
   var responseJSON = await response.json()
-
   var datetime = responseJSON.datetime
   var hour = datetime.slice(11, 13)
 
